@@ -1,10 +1,15 @@
 ## WEB STACK IMPLEMENTATION (LEMP STACK)
 The implementation of LEMP stack in this project will be carried out in six steps
 Step 1 – installing the nginx web server
+
 Step 2 — installing mysql
+
 Step 3 – installing php
+
 Step 4 — configuring nginx to use php processor
+
 Step 5 – testing php with nginx
+
 Step 6 – retrieving data from mysql database with php (continued)
 
 
