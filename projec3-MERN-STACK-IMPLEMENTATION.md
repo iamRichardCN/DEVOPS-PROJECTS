@@ -9,11 +9,11 @@ In this project, i will be implementing a web solution based on MERN stack in AW
 
 **Node.js:** A JavaScript runtime environment. It is used to run JavaScript on a machine rather than in a browser.
 
-Specifically, a simple **To-Do application** that creates To-Do will be deployed as a MERN stack in AWS Cloud. The procedure for this implementation is divided into two; 
+Specifically, a simple **To-Do application** that creates To-Do list will be deployed as a MERN stack in AWS Cloud. The procedure for this implementation is divided into two; 
 
-**Step 1 – backend configuration:** At this sage i focus on the i installation of ''expressjs'', the Models and creation of the Mongodb database
+**Step 1 – backend configuration:** At this sage, i will focus on the i installation of **expressjs**, **the Models** and creation of the **Mongodb database**
 
-**Step 2 – frontend creation:** This second step i will be creating a user interface for the Web client (browser) to interact with the application
+**Step 2 – frontend creation:** in this second step, i will be creating a user interface for the Web client (browser) to interact with the application
 
 ## STEP 1 – BACKEND CONFIGURATION
 After conecting the windows terminal to the EC2 instance created in the aws cloud, the ubuntu in use was upgraded using 
@@ -45,8 +45,8 @@ Next, i used the command ```npm init``` to initialise the project, so that a new
 
 #### Install ExpressJS
 
-Here, i will install ExpressJs and create the Routes directory. The ```Expressjs``` helps to define routes of the application based on HTTP methods and URLs while the  ```routes```  will define various endpoints that the ```To-do`` app will depend on.
-To use express, i installed it using npm:
+Here, i will install ExpressJs and create the Routes directory. The ```Expressjs``` helps to define routes of the application based on HTTP methods and URLs while the  ```routes```  will define various endpoints that the ```To-do``` app will depend on.
+To use **_express_**, i installed it using npm:
 
 ```npm install express```
 
@@ -83,7 +83,7 @@ console.log(`Server running on port ${port}`)
 
 <img width="584" alt="image" src="https://user-images.githubusercontent.com/111741533/195951454-ddeed6a8-1479-469c-bb52-c8f8b5c067d0.png">
 
-next i Installed the dotenv module before starting the node server.
+next i Installed the **dotenv** module before starting the node server.
 
 <img width="614" alt="image" src="https://user-images.githubusercontent.com/111741533/195951917-1b62ab5a-1546-4719-af73-65255720de95.png">
 
@@ -91,13 +91,14 @@ The result showed that the server was running on port 5000, suggesting a need to
 
 <img width="593" alt="image" src="https://user-images.githubusercontent.com/111741533/195952379-bd7d83e2-557b-45d1-91f9-331ae33e5f3a.png">
 
-with this change on the inound settings, the server’s can now be accessed from the Public IP or Public DNS name followed by port 5000:
+with this change on the inound settings, the server can now be accessed from the Public IP or Public DNS name followed by port 5000:
 
 <img width="960" alt="project 3 1" src="https://user-images.githubusercontent.com/111741533/195952611-3cdbbaac-93e6-4086-aa6c-2ed50227be48.png">
 
 
-****the route directory****
-the route folder is created within the Todo folder
+****making the The route directory****
+
+The route folder is created within the Todo folder
 
 <img width="441" alt="image" src="https://user-images.githubusercontent.com/111741533/195953187-fe14d145-7b7b-4fea-a9ab-a2b2fc56f267.png">
 
@@ -108,7 +109,7 @@ with the ```route``` Each task will be associated with some particular endpoint 
 
 since the app is going to make use of Mongodb which is a NoSQL database, there is a need to create a model. The models  define the database schema while the schema is a blueprint of how the database will be constructed, including other data fields that may not be required to be stored in the database.
 
-To create a Schema and a model, i installed mongoose which is a Node.js package that makes working with mongodb easier, then created aa new folder ```models``` . In the models directory i created a file and name it todo.js
+To create a Schema and a model, i installed mongoose which is a Node.js package that makes working with mongodb easier, then created a new folder ```models``` . In the models directory i created a file and name it todo.js
 
 <img width="382" alt="image" src="https://user-images.githubusercontent.com/111741533/195953851-3481dc1d-feb1-4f81-8571-0e8148357e94.png">
 
@@ -134,26 +135,26 @@ module.exports = Todo;
 
 Now we need to update our routes from the file api.js in ‘routes’ directory to make use of the new model.
 
-In Routes directory, open **api.js** with ```vim api.js```, delete the code inside with :%d command and paste the code below into it then save and exit
+In Routes directory, open **api.js** with ```vim api.js```, delete the code inside with ```:%d``` command and paste the code below into it then save and exit
 
 <img width="578" alt="image" src="https://user-images.githubusercontent.com/111741533/195954391-1b60fb06-bb1c-4cdb-af34-35af84bd5d13.png">
 
 ### MONGODB DATABASE
 
-in this app  i used MongoDB database as a service solution (DBaaS) to store data. For this,  i used a shared clusters free account in mongodb and selected AWS as the cloud provider which is ideal for this use case. after setting up the Mongodb, i allowed access to the MongoDB database from anywhere (Not secure, but it is ideal for testing).
+In this **Todo** app i will be using the MongoDB database as a service solution (DBaaS) to store data. For this,  i used a shared clusters free account in mongodb and selected AWS as the cloud provider which is ideal for this use case. after setting up the Mongodb, i allowed access to the MongoDB database from anywhere (Not secure, but it is ideal for testing).
 
 <img width="959" alt="image" src="https://user-images.githubusercontent.com/111741533/195955109-7cfbe030-59f5-4a7f-a828-30eee3176b4d.png">
 
 
-In the index.js file, i specified process.env to access environment variables, but i had not yet created this file. So i Created a file in the **Todo** directory and name it .env.
+In the index.js file, i specified ```process.env``` to access environment variables, but i had not yet created this file. So i Created a file in the **Todo** directory and name it .env.
 
 <img width="509" alt="image" src="https://user-images.githubusercontent.com/111741533/195955353-39717961-4dc7-4977-9414-4f753457f778.png">
 
-the .env file was edited to add the connection string to access the database in it. The connection string was retrived from the mongodb.
+The ```.env``` file was edited to add the connection string to access the database in it. The connection string was retrived from the mongodb.
 
 <img width="575" alt="image" src="https://user-images.githubusercontent.com/111741533/195955639-a214aa6f-9a20-4bdc-b4bd-62b3212cd4ac.png">
 
-after adding the database string, the **index.js** was updated to to reflect the use of **.env **. To open the file ```vim index.js```
+after adding the database string, the **index.js** was updated to to reflect the use of **.env.** To open the file ```vim index.js```
 
 the entire code in the index.js file was replaced with the following 
 
@@ -208,7 +209,7 @@ From its implementation however, i had the error
 
 
 this promted me to locate the PID and terminate the processs. 
-using the ```kill -9 <PID>`` code, after its implementation, the server error was eliminated
+using the ```kill -9 <PID>``` code, after its implementation, the server error was eliminated
 
 <img width="692" alt="image" src="https://user-images.githubusercontent.com/111741533/195956486-34cb21d4-7085-4708-a711-0feabb1b4766.png">
 
@@ -243,7 +244,7 @@ after the configuration, in the Todo directory run the app using  ```npm run dev
 
 
 
-**Creating your React Components**
+**Creating your React Components in five steps**
 
 One of the advantages of react is that it makes use of components, which are reusable and also makes code modular. For our Todo app, there will be two stateful components and one stateless component
 
@@ -251,7 +252,7 @@ One of the advantages of react is that it makes use of components, which are reu
 
 <img width="828" alt="image" src="https://user-images.githubusercontent.com/111741533/195957565-327d7609-01df-4fd6-9191-80fc5064d914.png">
 
-2) In the Input.js insert the following code snippet
+2) In the **Input.js** insert the following code snippet
 
 ```
 import React, { Component } from 'react';
@@ -303,9 +304,9 @@ export default Input
 
 3) **Install Axios**
 
-```npm install axios````
+```npm install axios```
 
-4) in the recently created ListTodo.js file nsert the following code snippet
+4) in the recently created **ListTodo.js** file nsert the following code snippet
 
 ```
 import React from 'react';
@@ -336,7 +337,7 @@ return (
 export default ListTodo
 ```
 
-5) Then in in  **Todo.js **file nsert the following code snippet
+5) Then in in  **Todo.js** file insert the following code snippet
 ```
 import React, {Component} from 'react';
 import axios from 'axios';
@@ -395,8 +396,9 @@ let { todos } = this.state;
 export default Todo;
 ```
 
+**Customizing the interface of the application**
 
-We need to make little adjustment to our react code. Delete the logo and adjust our App.js to look like this.
+to customize the interface if the application, We need to make little adjustment to our react code. Delete the logo and adjust our App.js to look like this.
 Move to the src folder to adjust the ```App.js```, ```App.css```, and the ```index.css```
 
 
@@ -513,7 +515,9 @@ margin-top: 0;
 
 c) in **index.css** insert 
 
-ody {
+
+```
+body {
 margin: 0;
 padding: 0;
 font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -530,17 +534,18 @@ code {
 font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
 monospace;
 }
+```
 
 
 Finally, from the **Todo directory** we run 
 
 ```npm run dev```
 
-to launch the application
+To launch the application
 
 <img width="836" alt="terminal view launch" src="https://user-images.githubusercontent.com/111741533/195958517-07c76557-021d-4c2e-9027-6bbd26d50199.png">
 
-app view from browser 
+App view from browser 
 
 <img width="926" alt="image" src="https://user-images.githubusercontent.com/111741533/195958580-22249472-7a4f-4210-b3ed-b4f169ded215.png">
 
