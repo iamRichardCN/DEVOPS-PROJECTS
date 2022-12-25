@@ -39,7 +39,7 @@ Used gdisk utility to create a single partition on each of the 3 disks:
  sudo gdisk /dev/xvdf
  sudo gdisk /dev/xvdg
  sudo gdisk /dev/xvdh
-```
+ ```
 
 <img width="650" alt="image" src="https://user-images.githubusercontent.com/111741533/209454646-c564e1f9-a713-452b-b488-869fd40f628d.png">
 
@@ -152,11 +152,12 @@ this step focused on the intallation process of wordpress on webserver
 
 - Started Apache
 
-```sudo systemctl enable httpd
+```
+sudo systemctl enable httpd
 sudo systemctl start httpd
 ```
 
-installed PHP and it’s depemdencies
+- installed PHP and it’s depemdencies
 
 ```
 sudo yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
@@ -168,8 +169,9 @@ sudo yum install php php-opcache php-gd php-curl php-mysqlnd
 sudo systemctl start php-fpm
 sudo systemctl enable php-fpm
 setsebool -P httpd_execmem 1
+```
 
-```<img width="958" alt="output after enabling httpd" src="https://user-images.githubusercontent.com/111741533/209455175-402a62ea-4278-4008-8765-672301494deb.png">
+<img width="958" alt="output after enabling httpd" src="https://user-images.githubusercontent.com/111741533/209455175-402a62ea-4278-4008-8765-672301494deb.png">
 
 
 - Downloaded wordpress and copy wordpress to var/www/html
@@ -177,23 +179,24 @@ setsebool -P httpd_execmem 1
 <img width="831" alt="image" src="https://user-images.githubusercontent.com/111741533/209454954-f5ae49ca-1eb9-40ab-9f97-cf0281df1a86.png">
 
 ```
- mkdir wordpress
-  cd   wordpress
-  sudo wget http://wordpress.org/latest.tar.gz
-  sudo tar xzvf latest.tar.gz
-  sudo rm -rf latest.tar.gz
-  cp wordpress/wp-config-sample.php wordpress/wp-config.php
-  cp -R wordpress /var/www/html/
-  ```
-  
-  
+mkdir wordpress
+cd   wordpress
+sudo wget http://wordpress.org/latest.tar.gz
+sudo tar xzvf latest.tar.gz
+sudo rm -rf latest.tar.gz
+cp wordpress/wp-config-sample.php wordpress/wp-config.php
+cp -R wordpress /var/www/html/
+```
+
 - Configured SELinux Policies
+
 
  ```
  Sudo chown -R apache:apache /var/www/html/wordpress
  sudo chcon -t httpd_sys_rw_content_t /var/www/html/wordpress -R
  sudo setsebool -P httpd_can_network_connect=1
-```
+ ```
+
 
 <img width="676" alt="image" src="https://user-images.githubusercontent.com/111741533/209455029-244afce3-1358-4c2e-b9a4-f1b320c922d7.png">
 
@@ -227,11 +230,12 @@ Updated and installed mysql server on the DB Server EC2:
 
 - Install MySQL client and test that you can connect from your Web Server to your DB server:
 
-``` sudo yum install mysql -y
- sudo mysql -h 172.31.28.152 -u wordpress -p
- ```
+```
+sudo yum install mysql -y
+sudo mysql -h 172.31.28.152 -u wordpress -p
+```
  
-- Verify if you can successfully execute SHOW DATABASES command and see a list of existing databases
+- Verify if I could successfully execute SHOW DATABASES command and see a list of existing databases
 
 <img width="908" alt="image" src="https://user-images.githubusercontent.com/111741533/209455110-a0ecc4ac-88ed-4ff6-9862-3d21784a6cd7.png">
 
@@ -248,7 +252,7 @@ bind-address=0.0.0.0
 
 - Changed permissions and configuration on the webserver so Apache could use WordPress, update the Database name, username and password:
 
-```sudo nano /var/www/html/wp-config.php```
+```sudo vi /var/www/html/wp-config.php```
 
 
 <img width="783" alt="image" src="https://user-images.githubusercontent.com/111741533/209455138-b74dfd42-f2d5-4fb7-beb4-3483d3b9969f.png">
