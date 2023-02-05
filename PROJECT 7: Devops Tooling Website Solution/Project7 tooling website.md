@@ -2,7 +2,8 @@
 
 In the previous project i implemented a WordPress based solution that is ready to be filled with content and can be used as a full fledged website or blog. 
 
-**Project 6** (https://github.com/iamRichardCN/DEVOPS-PROJECTS/blob/main/project6%20WEB%20SOLUTION%20WITH%20WORDPRESS.md)] 
+[**Project 6**](https://github.com/iamRichardCN/DEVOPS-PROJECTS/tree/main/Project%206%20Web%20Solution%20With%20WordPress)
+
 
 Moving further, in this project i will be implementing a tooling website solution which makes access to DevOps tools within the corporate infrastructure easily accessible. The solution implemented will consists of following components:
 
