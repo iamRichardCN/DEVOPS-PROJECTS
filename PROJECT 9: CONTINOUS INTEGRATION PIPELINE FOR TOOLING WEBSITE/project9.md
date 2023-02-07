@@ -76,7 +76,7 @@ You will see that a new build has been launched automatically (by webhook) and y
 <img width="952" alt="image" src="https://user-images.githubusercontent.com/111741533/217119084-04c071ea-473c-43e7-a7cf-ba3425d11399.png">
 
 
-- use  ```ls /var/lib/jenkins/jobs/tooling_github/builds/<build_number>/archive/``` to see uild history from terminal
+- use  ```ls /var/lib/jenkins/jobs/tooling_github/builds/<build_number>/archive/``` to see Build history from terminal
 
 <img width="505" alt="image" src="https://user-images.githubusercontent.com/111741533/217119435-a0cc2476-5e90-4965-89e7-5e6bc0a2740c.png">
 
