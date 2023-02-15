@@ -17,7 +17,7 @@ The target architecture will look like this:
 
 ## Preliminary 
 
-- Create an EC2 VM based on Ubuntu Server 20.04 LTS and name it Nginx LB (o open TCP port 80 for HTTP connections, also open TCP port 443 – this port is used for secured HTTPS connections)
+- Create an EC2 VM based on Ubuntu Server 20.04 LTS and name it Nginx Load Balancer _Nginx LB_ (open TCP port 80 for HTTP connections, also open TCP port 443 – this port is used for secured HTTPS connections)
 - 
 
 ##  Registering a new Domain
@@ -88,11 +88,59 @@ server {
 #       include /etc/nginx/sites-enabled/*;
 ```
 
+Restart Nginx and make sure the service is up and running
+
+```
+sudo systemctl restart nginx
+sudo systemctl status nginx
+```
+
+
+
 - For this project the content of the load balancer config are thus;
 
-<img width="530" alt="load balancer config file" src="https://user-images.githubusercontent.com/111741533/219165412-e5055899-0f21-4114-a19a-bf0d2f94dcbd.png">
+
+<img width="563" alt="image" src="https://user-images.githubusercontent.com/111741533/219171005-5e7eb0b6-dd87-4ab1-865f-bf3ad99818b0.png">
 
 
+
+- Remove the default site enable file and ensure only the loadbalancer file is in the folder
+
+<img width="532" alt="image" src="https://user-images.githubusercontent.com/111741533/219167231-e3e47243-3c84-41ea-b7be-359db99b23b7.png">
+
+- go to ```/etc/nginx/site-enabled``` remove the default file in then link it to the load balancer config file then reload the nginx
+
+
+<img width="541" alt="site enabled config" src="https://user-images.githubusercontent.com/111741533/219169897-32fba8f4-fc19-4752-9655-21a8830b207f.png">
+
+
+verify your nginx set up with ```sudo nginx -t```
+
+<img width="569" alt="image" src="https://user-images.githubusercontent.com/111741533/219170448-b77ca38a-6fb4-4e94-84cc-9ee24793471a.png">
+
+- Make sure snapd service is active and running
+
+<img width="543" alt="image" src="https://user-images.githubusercontent.com/111741533/219172358-a6c14827-79df-4cc2-adcf-c5afecadd6d6.png">
+
+
+- Check that the Web Servers can be reached from your browser using new domain name using HTTP protocol – http://toolingnwa.online
+- 
+![not secure output](https://user-images.githubusercontent.com/111741533/219171527-1eac8115-96ba-4b84-9cbb-c86411935274.png)
+
+
+
+- Request your certificate 
+
+```sudo snap install --classic certbot```
+(just follow the certbot instructions – you will need to choose which domain you want your certificate to be issued for, domain name will be looked up from nginx.conf file
+
+<img width="844" alt="cert box" src="https://user-images.githubusercontent.com/111741533/219172701-8f248065-e68d-4c29-a933-147ad935a47c.png">
+
+
+- verify the output on the webserver
+
+
+![connection secured](https://user-images.githubusercontent.com/111741533/219173005-2cd66479-95d2-4c57-9325-2e19e7fb8b42.png)
 
 
 
