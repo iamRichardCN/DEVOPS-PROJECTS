@@ -185,6 +185,9 @@ ansible-playbook -i /var/lib/jenkins/jobs/ansible/builds/<build-number>/archive/
 
 You can go to each of the servers and check if wireshark has been installed by running which wireshark or wireshark --version
 
+<img width="758" alt="final confirmation which wireshark" src="https://user-images.githubusercontent.com/111741533/220322956-059565a2-6308-4f4e-8096-759d4bf84a63.png">
+
+
 
 
 
